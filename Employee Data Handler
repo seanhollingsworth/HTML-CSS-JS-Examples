@@ -1,0 +1,83 @@
+/*
+(P)arameters: 
+(R)eturn: 
+(E)xample: 
+(P)seudocode:
+ - 
+ -
+*/
+
+let employeeData = [
+  {
+    'name': 'Joe',
+    'role': 'developer',
+    'salary': 125000,
+    'bonus': 15000
+  },
+  {
+    'name': 'Kelly',
+    'role': 'developer',
+    'salary': 135000,
+    'bonus': 7500
+  },
+  {
+    'name': 'Joan',
+    'role': 'product manager',
+    'salary': 105000,
+    'bonus': 25000
+  },
+  {
+    'name': 'Amber',
+    'role': 'developer',
+    'salary': 122000,
+    'bonus': 16500
+  },
+  {
+    'name': 'Tom',
+    'role': 'designer',
+    'salary': 87000,
+    'bonus': 9000
+  },
+  {
+    'name': 'Sara',
+    'role': 'product manager',
+    'salary': 97000,
+    'bonus': 12500
+  },
+  {
+    'name': 'Chris',
+    'role': 'designer',
+    'salary': 77500,
+    'bonus': 6500
+  }
+  ]
+  
+const getEmployeeData = (arrOfEmployees) =>{
+  let employeeData = {}
+  let resultArray = []
+  
+  for (let i = 0; i < arrOfEmployees.length; i++){
+    
+    if (arrOfEmployees[i]['role'] in employeeData){
+    employeeData[arrOfEmployees[i]['role']][0] += arrOfEmployees[i]['salary']
+      employeeData[arrOfEmployees[i]['role']][1] += arrOfEmployees[i]['bonus']
+      employeeData[arrOfEmployees[i]['role']][2] ++
+      }
+    else{
+      employeeData[arrOfEmployees[i]['role']] = [arrOfEmployees[i]['salary'], arrOfEmployees[i]['bonus'], 1]
+   }
+}
+  console.log(employeeData)
+  for (key in employeeData){
+    let tempObj = {}
+    tempObj['title'] = key
+    tempObj['totalEmployees'] = employeeData[key][2]
+    tempObj['avgSalary'] = parseInt(employeeData[key][0]/employeeData[key][2])
+    tempObj['avgBonus'] = employeeData[key][1]/ employeeData[key][2]
+    tempObj['avgTotalComp'] = parseInt(tempObj['avgSalary'] + tempObj['avgBonus'])
+
+     resultArray.push(tempObj)
+}
+  console.log(resultArray)
+}
+console.log(getEmployeeData(employeeData))
